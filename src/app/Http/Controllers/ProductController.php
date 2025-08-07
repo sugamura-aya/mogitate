@@ -43,9 +43,13 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
 
         // アップロード画像の処理（任意：元画像削除もできる）(保存先：storage/app/public/images)
-        $path = $request->file('image')->store('images', 'public');
-        $product->image = $path; // 上書き
-        
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('images', 'public');
+            $product->image = $path; //上書き
+        } else {
+            // アップロードなし → 既存画像はそのまま（$product->imageに触らない）
+        }
+
         $product->name = $request->name;
         $product->price = $request->price;
         $product->description = $request->description;
