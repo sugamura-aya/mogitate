@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="list-header">
-    <h1 class="page-title">商品一覧</h1>
+    <h1 class="list-title">商品一覧</h1>
     <form action="/products/register" class="register-btn" method="get">
         <button class="register-btn__submit" type="submit">＋商品追加</button>
     </form>
@@ -45,10 +45,13 @@
         <ul class="product-list">
             @foreach ($products as $product)
                 <li class="product-list__item">
-                    <img src="{{ asset($product->image) }}" alt="{{ $product->name }}">
-                    <p>{{ $product->image }}</p>
-                    <p class="row-name">{{ $product->name }}</p>
-                    <p class="row-price">&yen;{{ $product->price }}</p>
+                    <a href="{{ route('products.edit', $product->id) }}">
+                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+                    </a>
+                    <div class="product-info">
+                        <p class="row-name">{{ $product->name }}</p>
+                        <p class="row-price">&yen;{{ $product->price }}</p>
+                    </div>
                 </li>
             @endforeach
         </ul>

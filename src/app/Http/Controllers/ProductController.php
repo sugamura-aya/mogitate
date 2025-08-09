@@ -23,7 +23,7 @@ class ProductController extends Controller
         $products = $query->paginate(6)->withQueryString(); // ページネーション：7件ずつ＋ページ移動時も検索条件を保持
         $seasons = Season::all();   //季節選択
 
-        return view('product.index', compact('products', 'seasons','order'));
+        return view('products.index', compact('products', 'seasons','order'));
     }
 
 
@@ -34,7 +34,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $seasons = Season::all(); 
 
-        return view('product.edit', compact('product', 'seasons'));
+        return view('products.edit', compact('product', 'seasons'));
     }
 
     // ➁－２　商品詳細・変更画面（商品の更新）
@@ -59,7 +59,7 @@ class ProductController extends Controller
 
         $product->save(); 
 
-        return redirect()->route('product.index')->with('success', '商品を更新しました');
+        return redirect()->route('products.index')->with('success', '商品を更新しました');
     }
 
     //➁－３ 商品詳細・変更画面（商品の削除）
@@ -68,7 +68,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->delete();
 
-        return redirect()->route('product.index')->with('success', '商品を削除しました');
+        return redirect()->route('products.index')->with('success', '商品を削除しました');
     }
 
 
@@ -78,7 +78,7 @@ class ProductController extends Controller
     {
         $seasons = Season::all();
 
-        return view('product.register',compact('seasons'));
+        return view('products.register',compact('seasons'));
     }
 
     //➂－２　商品登録画面（登録処理）
@@ -98,7 +98,7 @@ class ProductController extends Controller
         // 季節（多対多）の保存（中間テーブルへ）
         $product->seasons()->attach($request->seasons); // attachで中間テーブルに保存
 
-        return redirect()->route('product.index')->with('success', '商品を登録しました');
+        return redirect()->route('products.index')->with('success', '商品を登録しました');
     }
 
 
