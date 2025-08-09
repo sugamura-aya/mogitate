@@ -34,8 +34,11 @@ class Product extends Model
     /*並び替えローカルスコープ（価格順）*/
     public function scopeSortByPrice($query, $order)
     {
-        if ($order === 'asc' || $order === 'desc') {
-            $query->orderBy('price', $order);
+        if ($order === 'high') {
+            return $query->orderBy('price', 'desc');
+        } elseif ($order === 'low') {
+            return $query->orderBy('price', 'asc');
+        }
+        return $query;
     }
-}
 }

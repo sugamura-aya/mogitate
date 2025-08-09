@@ -14,7 +14,6 @@
   <link rel="stylesheet" href="{{ asset('css/product.css') }}">
   {{--webフォント--}}
 </head>
-  
 
 <body>
     <header class="header">
