@@ -3,7 +3,7 @@ mogitate
 
 ## 環境構築手順
 1. このリポジトリをクローン  
-   `git clone git@github.com:sugamura-aya/contact-admin-system.git`
+   `git clone git@github.com:sugamura-aya/mogitate.git`
 2. Dockerイメージをビルド  
    `docker-compose up -d --build`
 3. PHPコンテナにログイン  
@@ -19,11 +19,11 @@ mogitate
 6. docker-compose.yml ファイル内の php: に以下を追記
    ```yaml
    user: "1000:1000"
-8. アプリキーの生成  
+7. アプリキーの生成  
    `php artisan key:generate`
-9. マイグレーション実行  
+8. マイグレーション実行  
    `php artisan migrate`
-10. ダミーデータ投入（ファクトリ使用）  
+9. ダミーデータ投入（ファクトリ使用）  
     `php artisan db:seed`
 
 ## 使用技術・実行環境
