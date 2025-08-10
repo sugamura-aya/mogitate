@@ -56,10 +56,11 @@
             @endforeach
         </ul>
     </div>
+</div>
 
-    {{-- ページネーションリンクの表示 --}}
+{{-- ページネーションリンクの表示 --}}
+<div class="pagination-wrapper">
     {{ $products->links() }}
-    
 </div>
 
 @endsection

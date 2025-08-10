@@ -62,7 +62,7 @@
 
         {{-- ボタン --}}
         <div class="register-form__button">
-            <a href="{{ url('/products') }}" class="correction-button">戻る</a>
+            <a href="{{ url('/products') }}" class="register-correction-button">戻る</a>
             <button type="submit" class="send-button-submit">登録</button>
         </div>
     </form>
