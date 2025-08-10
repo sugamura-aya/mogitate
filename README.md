@@ -32,6 +32,7 @@ mogitate
 - PHP 8.1.32（Docker）
 - MySQL 8.0.26（Docker）
 - Docker / Docker Compose
+
 ※より詳細な環境情報は composer.json および docker-compose.yml をご参照ください。
 
 ## ER図
