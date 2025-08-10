@@ -23,8 +23,6 @@ Route::get('/products/register', [ProductController::class, 'register'])->name('
 // ➂商品登録処理
 Route::post('/products/register', [ProductController::class, 'store'])->name('products.store');
 
-
-
 // ➁商品詳細兼更新画面表示
 Route::get('/products/{productId}', [ProductController::class, 'edit'])->name('products.edit');
 

@@ -20,7 +20,7 @@ class ProductController extends Controller
         $query->nameSearch($request->name)
               ->sortByPrice($order);
 
-        $products = $query->paginate(6)->withQueryString(); // ページネーション：7件ずつ＋ページ移動時も検索条件を保持
+        $products = $query->paginate(6)->withQueryString(); // ページネーション：6件ずつ＋ページ移動時も検索条件を保持
         $seasons = Season::all();   //季節選択
 
         return view('products.index', compact('products', 'seasons','order'));
@@ -54,7 +54,7 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->description = $request->description;
 
-        // 中間テーブル（多対多）更新
+        // 中間テーブル（多対多）更新メソッド
         $product->seasons()->sync($request->seasons);
 
         $product->save(); 
@@ -95,7 +95,7 @@ class ProductController extends Controller
         $product->image = $imagePath;
         $product->save();
 
-        // 季節（多対多）の保存（中間テーブルへ）
+        // 季節（多対多）の保存（中間テーブルへ）保存メソッド
         $product->seasons()->attach($request->seasons); // attachで中間テーブルに保存
 
         return redirect()->route('products.index')->with('success', '商品を登録しました');
