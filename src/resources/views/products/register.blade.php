@@ -28,7 +28,9 @@
         {{-- 商品画像 --}}
         <div class="form-group">
             <div class="form-label">商品画像<span class="required">必須</span></div>
+            <img id="preview-image" class="preview-image" style="display:none;" alt="画像プレビュー">
             <input id="image-input" class="image-input" type="file" name="image" accept="image/*">
+            <span id="file-name" class="file-name"></span>
             @error('image')
             <div class="error-message">{{ $message }}</div>
             @enderror
@@ -73,8 +75,8 @@
 <script>
 document.getElementById('image-input').addEventListener('change', function(){
     const file = this.files[0];
-    const fileNameSpan = document.getElementById('file-name');
     const previewImage = document.getElementById('preview-image');
+    const fileNameSpan = document.getElementById('file-name');
     
     if(file){
         fileNameSpan.textContent = file.name;
@@ -86,8 +88,8 @@ document.getElementById('image-input').addEventListener('change', function(){
         reader.readAsDataURL(file);
     } else {
         fileNameSpan.textContent = '';
+        previewImage.src = '';
         previewImage.style.display = 'none';
-        previewImage.src = '#';
     }
 });
 </script>
